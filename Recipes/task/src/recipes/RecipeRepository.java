@@ -10,16 +10,13 @@ public class RecipeRepository {
 
    public List<Recipe> recipes = new ArrayList<>();
 
-   public List<Recipe> getAll(){
-      return recipes;
-   }
 
-   public List<Recipe> get(){
-      return recipes;
+   public Recipe getById(int id){
+      return recipes.get(id);
    }
 
    public String add(Recipe recipe){
       recipes.add(recipe);
-      return "Successfully added";
+      return "added";
    }
 }

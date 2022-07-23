@@ -9,14 +9,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class Controller {
 
+    @Autowired
     Recipe recipe;
 
-    @GetMapping("/recipe")
-    public Recipe getRecipe() {
-        return recipe;
+    @GetMapping("/recipe/{id}")
+    public Recipe getById(@PathVariable("id") int id) {
+        return recipe.getById(id);
     }
 
-    @PostMapping("/recipe")
+    @PostMapping("/recipe/new")
     public void postRecipe(@RequestBody Recipe recipe) {
         this.recipe = recipe;
     }
