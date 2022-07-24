@@ -1,24 +1,36 @@
 package recipes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class Controller {
 
+    //Czy to jest Dependencie Injection?  Beanem w tym przypadku jest Object Recipe?
     @Autowired
-    Recipe recipe;
+    RecipeRepository recipeRepository;
+
+//    @GetMapping("/recipe/wholeRecipe/{id}")
+//    public Recipe getByIdWholeRecipe(@PathVariable("id") int id) {
+//        return recipeRepository.getByIdWholeRecipe(id);
+//    }
 
     @GetMapping("/recipe/{id}")
     public Recipe getById(@PathVariable("id") int id) {
-        return recipe.getById(id);
+        try {
+            return recipeRepository.getById(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/recipe/new")
-    public void postRecipe(@RequestBody Recipe recipe) {
-        this.recipe = recipe;
+    public Recipe postRecipe(@RequestBody Recipe recipe) {
+        recipeRepository.add(recipe);
+        return recipe;
     }
 }
