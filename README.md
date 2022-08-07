@@ -1,17 +1,3 @@
 # RecipesSpringBoot
 
-POST /api/recipe/new request
-
-{
-   "name": "Fresh Mint Tea",
-   "category": "beverage",
-   "description": "Light, aromatic and refreshing beverage, ...",
-   "ingredients": ["boiled water", "honey", "fresh mint leaves"],
-   "directions": ["Boil water", "Pour boiling hot water into a mug", "Add fresh mint leaves", "Mix and let the mint leaves seep for 3-5 minutes", "Add honey and mix again"]
-}
-
-Response:
-
-{
-   "id": 1
-}
+![image](https://user-images.githubusercontent.com/80157748/183294577-bd21728c-447e-4068-8a54-858c2a38aad8.png)
